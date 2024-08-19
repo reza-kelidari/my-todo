@@ -1,0 +1,26 @@
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 0.5rem #00000010;
+  min-width: 17rem;
+  transition: 0.3s ease-in-out all;
+
+  &:hover {
+    box-shadow: 0 0 1rem #00000025;
+    transform: scale(1.05);
+  }
+
+  .titleBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+  }
+
+  .time, .desc {
+    opacity: 0.5;
+  }
+}
