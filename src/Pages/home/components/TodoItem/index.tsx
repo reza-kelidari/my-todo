@@ -5,9 +5,9 @@ import { Todo } from "../..";
 
 export default function TodoItem({
   name,
-  time,
   desc,
   remove,
+  id,
 }: Todo & {
   remove: any;
 }): ReactElement {
@@ -19,15 +19,12 @@ export default function TodoItem({
           className={Styles.close}
           onClick={() =>
             remove((prevTasks: Array<Todo>) =>
-              prevTasks.filter((item) => item.time !== time)
+              prevTasks.filter((item) => item.id !== id)
             )
           }
         >
           <Close />
         </div>
-      </div>
-      <div className={Styles.time}>
-        {new Date(time).toLocaleDateString("fa-IR")}
       </div>
       <div className={Styles.desc}>{desc}</div>
     </div>
