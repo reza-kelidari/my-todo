@@ -20,7 +20,20 @@
     font-weight: bold;
   }
 
-  .time, .desc {
+  .desc {
     opacity: 0.5;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .item {
+    min-width: 13rem;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .item {
+    min-width: unset;
+    width: 100%;
   }
 }

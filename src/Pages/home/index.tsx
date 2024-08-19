@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import TodoItem from "./components/TodoItem";
 import Styles from "./styles.module.scss";
 import Done from "../../Assets/Done";
+import Add from "../../Assets/Add";
 
 export interface Todo {
   id: number;
@@ -33,7 +34,13 @@ export default function Home() {
 
   return (
     <div className={Styles.container}>
-      <h1 className={Styles.title}>کارهای من</h1>
+      <nav className={Styles.navBar}>
+        <h1 className={Styles.title}>کارهای من</h1>
+        <div className={Styles.addPage}>
+          <button>افزودن</button>
+          <Add />
+        </div>
+      </nav>
 
       <div className={Styles.list}>
         {tasks.map((item: Todo, index: number) => (
