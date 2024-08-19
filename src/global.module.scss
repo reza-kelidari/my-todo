@@ -19,4 +19,12 @@
 body {
   font: 20px Yekan-Bakh;
   direction: rtl;
+
+  .hide {
+    display: none !important;
+  }
+
+  a {
+    text-decoration: none;
+  }
 }

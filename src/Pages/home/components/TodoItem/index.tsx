@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import Styles from "./styles.module.scss";
 import Close from "../../../../Assets/Close";
-import { Todo } from "../..";
+import { Todo } from "../../index";
 
 export default function TodoItem({
   name,
@@ -18,9 +18,12 @@ export default function TodoItem({
         <div
           className={Styles.close}
           onClick={() =>
-            remove((prevTasks: Array<Todo>) =>
-              prevTasks.filter((item) => item.id !== id)
-            )
+            remove((prevTasks: Array<Todo>) => {
+              console.log(prevTasks);
+              console.log(prevTasks.filter((item) => item.id !== id));
+
+              return prevTasks.filter((item) => item.id !== id);
+            })
           }
         >
           <Close />

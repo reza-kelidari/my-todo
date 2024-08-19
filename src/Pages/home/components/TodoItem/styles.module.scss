@@ -35,5 +35,10 @@
   .item {
     min-width: unset;
     width: 100%;
+
+    &:hover {
+      box-shadow: 0 0 0.5rem #00000010;
+      transform: unset;
+    }
   }
 }

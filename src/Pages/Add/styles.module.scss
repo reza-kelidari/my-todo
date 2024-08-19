@@ -1,0 +1,61 @@
+.addTodo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 10rem 2rem 2rem;
+  border-radius: 1rem;
+  margin: 0 auto;
+
+  .titleBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 20rem;
+
+    .title {
+      font-size: 1.5rem;
+    }
+  }
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .input {
+      padding: 0.5rem 1rem;
+      font: 1.25rem Yekan-Bakh;
+      border-radius: 1rem;
+      border: 3px solid #00000022;
+      transition: 0.1s ease-in-out all;
+
+      &:focus {
+        outline: unset;
+        background: #00000011;
+        border-color: transparent;
+      }
+    }
+  }
+
+  .save {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #fff;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem #00000022;
+    margin: 2rem auto 0;
+    width: fit-content;
+
+    &.disabled {
+      opacity: 0.5;
+    }
+
+    button {
+      border: none;
+      background: none;
+      font: 1.25rem Yekan-Bakh;
+    }
+  }
+}

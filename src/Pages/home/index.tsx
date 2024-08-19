@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
-import TodoItem from "./components/TodoItem";
+import { useState } from "react";
 import Styles from "./styles.module.scss";
 import Done from "../../Assets/Done";
-import Add from "../../Assets/Add";
+import TodoItem from "./components/TodoItem";
 
 export interface Todo {
   id: number;
@@ -10,38 +9,23 @@ export interface Todo {
   desc: string;
 }
 
+export const key: string = "my-todo";
+
+export const defaultNewTodo: Todo = {
+  id: Date.now(),
+  name: "",
+  desc: "",
+};
+
 export default function Home() {
-  const key: string = "my-todo";
-  const [tasks, setTasks] = useState<Array<Todo>>([]);
+  const [tasks, setTasks] = useState<Array<Todo>>(
+    JSON.parse(localStorage.getItem(key) || "[]")
+  );
 
-  const defaultNewTodo: Todo = {
-    id: Date.now(),
-    name: "",
-    desc: "",
-  };
   const [newTodo, setNewTodo] = useState<Todo>(defaultNewTodo);
-
-  useEffect(() => {
-    const data = JSON.parse(localStorage.getItem(key) || "[]");
-    setTasks(data);
-  }, []);
-
-  useEffect(() => {
-    if (JSON.parse(localStorage.getItem(key) || "[]") !== tasks) {
-      localStorage.setItem(key, JSON.stringify(tasks));
-    }
-  }, [tasks]);
 
   return (
     <div className={Styles.container}>
-      <nav className={Styles.navBar}>
-        <h1 className={Styles.title}>کارهای من</h1>
-        <div className={Styles.addPage}>
-          <button>افزودن</button>
-          <Add />
-        </div>
-      </nav>
-
       <div className={Styles.list}>
         {tasks.map((item: Todo, index: number) => (
           <TodoItem
@@ -61,6 +45,8 @@ export default function Home() {
             onClick={() => {
               if (newTodo.name !== "" && newTodo.desc !== "") {
                 setTasks((prevTasks: Array<Todo>) => [...prevTasks, newTodo]);
+                localStorage.setItem(key, JSON.stringify([...tasks, newTodo]));
+                defaultNewTodo.id = Date.now();
                 setNewTodo(defaultNewTodo);
               }
             }}
